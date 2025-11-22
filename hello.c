@@ -28,3 +28,33 @@ int main() {
     free(str);
     return 0;
 }
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+char* randomChar(int len){
+    srand(time(NULL));
+
+    char set[] = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+    char *xep = calloc(sizeof(char), len + 1);
+
+    for(int i = 0; i < len; i++){
+        int random = rand() % 62;
+        xep[i] = set[random];
+    }
+
+    xep[len + 1] = '\0';
+
+
+    return xep;
+}
+
+int main(){
+    int len = 1;
+    randomChar(len);
+
+    //printf("%s\n", randomChar(1000000));
+   
+    return 0;
+}
