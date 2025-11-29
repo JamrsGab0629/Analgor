@@ -35,6 +35,21 @@ int insert_ip(char *ip) {
         current = current->next;
     }
 
+    // Allocate memory for new node
+    Node *new_node = (Node *)malloc(sizeof(Node));
+    if (!new_node) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(1);
+    }
+
+    strcpy(new_node->ip, ip);
+    new_node->next = hash_table[index]; // link into chain
+    hash_table[index] = new_node;
+
+    return 1; // New unique IP
+}
+
+
     
     Node *new_node = malloc(sizeof(Node));
     if (!new_node) {
